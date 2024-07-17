@@ -33,3 +33,6 @@ with open('scaler.pkl', 'wb') as f:
 # Evaluate the model
 accuracy = clf.score(X_test_scaled, y_test)
 print(f"Model accuracy: {accuracy:.2f}")
+
+import sklearn
+print(sklearn.__version__)
