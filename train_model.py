@@ -25,10 +25,10 @@ clf.fit(X_train_scaled, y_train)
 
 # Save the model and scaler
 with open('fish_species_model.pkl', 'wb') as f:
-    pickle.dump(clf, f)
+    pickle.dump(clf, f, protocol=pickle.HIGHEST_PROTOCOL)
 
 with open('scaler.pkl', 'wb') as f:
-    pickle.dump(scaler, f)
+    pickle.dump(scaler, f, protocol=pickle.HIGHEST_PROTOCOL)
 
 # Evaluate the model
 accuracy = clf.score(X_test_scaled, y_test)
