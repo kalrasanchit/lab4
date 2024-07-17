@@ -1,11 +1,11 @@
-import pickle
 from flask import Flask, request, jsonify, render_template
+import pickle
 import numpy as np
 
 app = Flask(__name__)
 
 # Load the model and scaler
-with open('fish_species_model.pkl', 'rb') as f:
+with open('model.pkl', 'rb') as f:
     model = pickle.load(f)
 
 with open('scaler.pkl', 'rb') as f:
@@ -24,13 +24,13 @@ def predict():
         float(request.form['height']),
         float(request.form['width'])
     ]
-    
+
     # Scale the features
     scaled_features = scaler.transform(np.array(features).reshape(1, -1))
-    
+
     # Make prediction
     prediction = model.predict(scaled_features)
-    
+
     return jsonify({'species': prediction[0]})
 
 if __name__ == '__main__':

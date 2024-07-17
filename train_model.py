@@ -23,12 +23,12 @@ X_test_scaled = scaler.transform(X_test)
 clf = RandomForestClassifier(n_estimators=100, random_state=42)
 clf.fit(X_train_scaled, y_train)
 
-# Save the model and scaler
-with open('fish_species_model.pkl', 'wb') as f:
-    pickle.dump(clf, f, protocol=pickle.HIGHEST_PROTOCOL)
+# Save the trained model and scaler
+with open('model.pkl', 'wb') as f:
+    pickle.dump(clf, f)
 
 with open('scaler.pkl', 'wb') as f:
-    pickle.dump(scaler, f, protocol=pickle.HIGHEST_PROTOCOL)
+    pickle.dump(scaler, f)
 
 # Evaluate the model
 accuracy = clf.score(X_test_scaled, y_test)
