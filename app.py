@@ -1,12 +1,15 @@
+import pickle
 from flask import Flask, request, jsonify, render_template
-import joblib
 import numpy as np
 
 app = Flask(__name__)
 
 # Load the model and scaler
-model = joblib.load('fish_species_model.joblib')
-scaler = joblib.load('scaler.joblib')
+with open('fish_species_model.pkl', 'rb') as f:
+    model = pickle.load(f)
+
+with open('scaler.pkl', 'rb') as f:
+    scaler = pickle.load(f)
 
 @app.route('/')
 def home():
